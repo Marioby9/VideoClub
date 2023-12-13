@@ -6,9 +6,9 @@
     {
 		//Atributos de conexión a base de datos
 		private static $host = "localhost";
-		private static $user = "examen";
-		private static $password = "examen";
-		private static $database = "orm";
+		private static $user = "videoclub";
+		private static $password = "videoclub";
+		private static $database = "videoclub";
 		
 		/**
 		 * Mapeamos el objeto con la base de datos.
@@ -133,7 +133,7 @@
 			$dbConn = null;
 			$arrObjects = array();
 			foreach($arrResult as $key => $val) {
-					$arrObjects[$val[0]] = new Producto();
+					$arrObjects[$val[0]] = new Product();
 					$arrObjects[$val[0]]->setId($val[0]);
 					$arrObjects[$val[0]]->setNombre($val[1]);
 			}

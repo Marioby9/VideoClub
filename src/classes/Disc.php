@@ -9,7 +9,7 @@
 
         //
 
-        public function __construct(string $pTitle = null, string $pArtist = null, int $pYear = null, string $pPublisher = null, int $pDuration = null, string $pISWC = null, string $pGenre = null) {
+        public function __construct(string $pTitle = null, string $pArtist = null, int $pYear = null, string $pPublisher = null, int $pDuration = null, string $pISWC = null, string $pGenre = null) : void {
             parent::__construct($pTitle, $pYear, $pPublisher, $pGenre);
             $this->artist = $pArtist;
             $this->duration = $pDuration;
