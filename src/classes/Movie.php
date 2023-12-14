@@ -1,15 +1,15 @@
 <?php
-    require_once "./Product.php";
+    require_once "./src/classes/Product.php";
 
     class Movie extends Product{
 
-        private string $director;
-        private int $duration;
-        private string $ISAN;
+        private ?string $director;
+        private ?int $duration;
+        private ?string $ISAN;
 
         //
 
-        public function __construct(string $pTitle = null, string $pDirector = null, int $pYear = null, string $pPublisher = null, int $pDuration = null, string $pISAN = null, string $pGenre = null) : void {
+        public function __construct(string $pTitle = null, string $pDirector = null, int $pYear = null, string $pPublisher = null, int $pDuration = null, string $pISAN = null, string $pGenre = null) {
             parent::__construct($pTitle, $pYear, $pPublisher, $pGenre);
             $this->director = $pDirector;
             $this->duration = $pDuration;
@@ -18,13 +18,13 @@
 
         //
 
-        public function setDirector(string $pDirector) : void {
+        public function setDirector(?string $pDirector) : void {
             $this->director = $pDirector;
         }
-        public function setDuration(int $pDuration) : void {
+        public function setDuration(?int $pDuration) : void {
             $this->duration = $pDuration;
         }
-        public function setISAN(string $pISAN) : void {
+        public function setISAN(?string $pISAN) : void {
             $this->ISAN = $pISAN;
         }
 

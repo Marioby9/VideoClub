@@ -1,8 +1,12 @@
 <?php
+    include_once "./src/models/ORM.inc.php";
+    include_once "./src/classes/Movie.php";
+
     if(empty($_GET)){
         header("Location: index.php?ruta=home");
         exit();
     }
+    $ORM = new ORM();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +28,7 @@
                         include_once "./src/views/HomeView.php";
                     }
                     else if($_GET["ruta"] == "movies"){
-                        include_once "./src/views/MoviesView.php";
+                        include_once "./src/controllers/MoviesController.php";
                     }
                     else if($_GET["ruta"] == "books"){
                         include_once "./src/views/BooksView.php";
@@ -32,7 +36,6 @@
                     else if($_GET["ruta"] == "music"){
                         include_once "./src/views/DiscsView.php";
                     }
-                   
                 }
                 else{
 

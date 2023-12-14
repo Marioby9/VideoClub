@@ -1,0 +1,160 @@
+.title{
+    font-size: xxx-large;
+    text-align: center;
+}
+.catalogue{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.845);
+    gap: 40px;
+    border-radius: 30px;
+    font-size: small;
+}
+.search p{
+    font-size: large;
+}
+.search select{
+    border-radius: 15px;
+    font-size: large;
+    padding: 10px;
+    width: 15%;
+    cursor: pointer;
+}
+
+.field{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: 2px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 5px;
+}
+.field input{
+    background-color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: medium;
+    width: 90%;
+    font-size: large;
+}
+
+.field input:focus{
+    outline: none;
+}
+
+.searchButton{
+    cursor: pointer;
+    font-size: large;
+    color: black;
+    transition: transform .3s;
+}
+.searchButton:hover{
+    transform: scale(1.2);
+}
+
+.avanzada{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    transition: background-color .2s;
+    cursor: pointer;
+}
+.avanzada:hover{
+    background-color: #12395d;
+
+}
+.avanzada p{
+    font-size: 11px;
+    text-align: center;
+}
+.avanzada i{
+    font-size: large;
+    color: #ffffff;
+}
+
+
+
+
+.moviesCont{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    min-height: 200px;
+    max-height: 350px;
+    padding: 40px 10px;
+    background-color: rgba(0, 0, 0, 0.845);
+    gap: 40px;
+    border-radius: 30px;
+}
+
+.rowNames{
+    width: 100%;
+    display: flex;
+}
+.rowNames p{
+    font-weight: 600;
+    font-size: x-large;
+    width: 100%;
+    text-align: center;
+}
+
+.movies{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+}
+.movies{
+    &::-webkit-scrollbar {
+        width: 12px; 
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #12395d;
+        border-radius: 5px; 
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #fff;
+        border-radius: 5px;
+    }
+}
+
+.movie{
+    color: #ffffff;
+    font-weight: 400;
+    width: 100%;
+    display: flex;
+    padding: 20px 0;
+    border-radius: 10px;
+    transition: all .1s;
+}
+.movie:hover{
+    background-color: #12395d;
+    cursor: pointer;
+}
+.movie p{
+    text-align: center;
+    width: 100%;
+}
+
+p.available{
+    width: 70%;
+}

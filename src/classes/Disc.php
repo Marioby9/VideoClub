@@ -3,13 +3,13 @@
 
     class Disc extends Product{
         
-        private string $artist;
-        private int $duration;
-        private string $ISWC;
+        private ?string $artist;
+        private ?int $duration;
+        private ?string $ISWC;
 
         //
 
-        public function __construct(string $pTitle = null, string $pArtist = null, int $pYear = null, string $pPublisher = null, int $pDuration = null, string $pISWC = null, string $pGenre = null) : void {
+        public function __construct(string $pTitle = null, string $pArtist = null, int $pYear = null, string $pPublisher = null, int $pDuration = null, string $pISWC = null, string $pGenre = null) {
             parent::__construct($pTitle, $pYear, $pPublisher, $pGenre);
             $this->artist = $pArtist;
             $this->duration = $pDuration;
@@ -18,13 +18,13 @@
 
         //
 
-        public function setArtist(string $pArtist) : void {
+        public function setArtist(?string $pArtist) : void {
             $this->artist = $pArtist;
         }
-        public function setDuration(string $pDuration) : void {
+        public function setDuration(?string $pDuration) : void {
             $this->duration = $pDuration;
         }
-        public function setISWC(string $pISWC) : void {
+        public function setISWC(?string $pISWC) : void {
             $this->ISWC = $pISWC;
         }
 

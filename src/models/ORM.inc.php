@@ -15,8 +15,7 @@
 		 * Creamos un nuevo registro,
 		 * Usamos PDO y sentencias preparadas.
 		 */
-		public function persist(&$object)
-		{
+		public function persist(&$object) {
 			$id = 0; //aux para obtener el siguiente id
 			try{  
 				$dbConn= new PDO("mysql:host=".self::$host.";dbname=".self::$database."",self::$user,self::$password);  
@@ -68,8 +67,7 @@
 		 * Actualizamos la base de datos con las propiedades del objeto
 		 * Usamos PDO y sentencias preparadas
 		 */
-		public function flush(&$object)
-		{
+		public function flush(&$object) {
 			try{  
 				$dbConn= new PDO("mysql:host=".self::$host.";dbname=".self::$database."",self::$user,self::$password);  
 			} catch(Exception $e){  
@@ -102,8 +100,7 @@
 		 * Obtenemos todas las tuplas de base de datos en un array de objetos.
 		 * Usamos PDO y sentencias preparadas
 		 */
-		public function findAll($table)
-		{
+		public function findAll($table) {
 			$arrResult = array();
 			
 			try{  
@@ -133,9 +130,29 @@
 			$dbConn = null;
 			$arrObjects = array();
 			foreach($arrResult as $key => $val) {
-					$arrObjects[$val[0]] = new Product();
-					$arrObjects[$val[0]]->setId($val[0]);
-					$arrObjects[$val[0]]->setNombre($val[1]);
+					$arrObjects[$val[0]] = new $table();
+					//METEMOS ATRIBUTOS DE PRODUCTO (COMUNES)
+					$arrObjects[$val[0]]->setId($val["id"]);
+					$arrObjects[$val[0]]->setTitle($val["title"]);
+					$arrObjects[$val[0]]->setYear($val["year"]);
+					$arrObjects[$val[0]]->setPublisher($val["publisher"]);
+					$arrObjects[$val[0]]->setGenre($val["genre"]);
+
+					if($table == "Movie"){
+						$arrObjects[$val[0]]->setDirector($val["director"]);
+						$arrObjects[$val[0]]->setDuration($val["duration"]);
+						$arrObjects[$val[0]]->setISAN($val["isan"]);
+					}
+					else if($table == "Book"){
+						$arrObjects[$val[0]]->setAuthor($val["author"]);
+						$arrObjects[$val[0]]->setPages($val["pages"]);
+						$arrObjects[$val[0]]->setISBN($val["isbn"]);
+					}
+					else if($table == "Disc"){
+						$arrObjects[$val[0]]->setArtist($val["artist"]);
+						$arrObjects[$val[0]]->setDuration($val["duration"]);
+						$arrObjects[$val[0]]->setISWC($val["iswc"]);
+					}
 			}
 			return $arrObjects;
 		}
@@ -145,8 +162,7 @@
 		 * base de datos a partir del id
 		 * Usamos PDO y sentencias preparadas
 		 */
-		public function find($table,$id)
-		{
+		public function find($table, $id) {
 			$arrResult = array();
 			
 			try{  

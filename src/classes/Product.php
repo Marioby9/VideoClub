@@ -2,11 +2,11 @@
 
     abstract class Product {
 
-        protected int $id;
-        protected string $title;
-        protected int $year;
-        protected string $publisher;
-        protected string $genre;
+        protected ?int $id;
+        protected ?string $title;
+        protected ?int $year;
+        protected ?string $publisher;
+        protected ?string $genre;
 
         //
 
@@ -19,21 +19,27 @@
 
         //
 
-        final public function setTitle(string $pTitle) : void {
+        final public function setId(?int $pId) : void {
+            $this->id = $pId;
+        }
+        final public function setTitle(?string $pTitle) : void {
             $this->title = $pTitle;
         }
-        final public function setYear(int $pYear) : void {
+        final public function setYear(?int $pYear) : void {
             $this->year = $pYear;
         }
-        final public function setPublisher(string $pPublisher) : void {
+        final public function setPublisher(?string $pPublisher) : void {
             $this->publisher = $pPublisher;
         }
-        final public function setGenre(string $pGenre) : void {
+        final public function setGenre(?string $pGenre) : void {
             $this->genre = $pGenre;
         }
 
         //
 
+        final public function getId() : int {
+            return $this->id;
+        }
         final public function getTitle() : string {
             return $this->title;
         }
