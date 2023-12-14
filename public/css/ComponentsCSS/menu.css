@@ -1,0 +1,69 @@
+.menu{
+    height: 100%;
+    width: 350px;
+    background-color: #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: left 0.3s ease;
+    flex-direction: column;
+    gap: 40px;
+}
+.menu img{
+    width: 90%;
+}
+.menu nav{
+    width: 100%;
+    height: fit-content;
+}
+.menu ul{
+    font-size: x-large;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    gap: 30px;
+}
+.menu li{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu nav a{
+    width: 80%;
+    color: #ffff;
+    padding: 10px;
+    text-align: center;
+    transition: background-color .2s;
+    border-radius: 5px;
+}
+.menu nav a:hover{
+    background-color: #12395d;
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+    font-size: medium;
+    margin-top: 30px;
+    width: 70%;
+}
+.btnRed{
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: larger;
+    transition: .5s;
+    width: 100%;
+}
+.btnRed i{
+    color: #000000;
+}
+.btnRed p{
+    color: #000000;
+}
+
+.btnRed:hover{
+    transform: scale(1.05);
+}
