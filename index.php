@@ -1,6 +1,6 @@
 <?php
-    include_once "./src/models/ORM.inc.php";
-    include_once "./src/classes/Movie.php";
+    include_once "./src/Model/ORM.inc.php";
+    include_once "./src/Class/Movie.php";
 
     if(empty($_GET)){
         header("Location: index.php?ruta=home");
@@ -20,21 +20,21 @@
 </head>
 <body class="center">
     <section class="page">
-        <?php include_once "./src/components/Menu.php"; ?>
+        <?php include_once "./src/Components/Menu.php"; ?>
         <main id="main">
             <?php 
                 if(isset($_GET["ruta"])){
                     if($_GET["ruta"] == "home"){
-                        include_once "./src/views/HomeView.php";
+                        include_once "./src/View/HomeView.php";
                     }
                     else if($_GET["ruta"] == "movies"){
-                        include_once "./src/controllers/MoviesController.php";
+                        include_once "./src/Controller/MoviesController.php";
                     }
                     else if($_GET["ruta"] == "books"){
-                        include_once "./src/views/BooksView.php";
+                        include_once "./src/View/BooksView.php";
                     }
                     else if($_GET["ruta"] == "music"){
-                        include_once "./src/views/DiscsView.php";
+                        include_once "./src/View/DiscsView.php";
                     }
                 }
                 else{
