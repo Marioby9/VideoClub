@@ -162,7 +162,7 @@
 		 * base de datos a partir del id
 		 * Usamos PDO y sentencias preparadas
 		 */
-		public function find($table, $id) {
+		public function find($table, $column, $value) {
 			$arrResult = array();
 			
 			try{  
@@ -176,10 +176,10 @@
 				$dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 				$dbConn->beginTransaction();
-				$sentencia = $dbConn->prepare("SELECT * FROM ".$table." WHERE id = ?");
-				if ($sentencia->execute(array($id))) {
+				$sentencia = $dbConn->prepare("SELECT * FROM $table WHERE UPPER($column) LIKE UPPER('%$value%')");
+				if ($sentencia->execute(array())) {
 					while ($fila = $sentencia->fetch()) {
-						$arrResult = $fila;
+						$arrResult[] = $fila;
 					}
 				}
 
@@ -190,15 +190,34 @@
 				echo "Fallo: " . $e->getMessage();
 			}
 			$dbConn = null;
-			
-			
-			if($arrResult!=null){
-				$object = new $table();
-				$object->setId($arrResult[0]);
-				$object->setNombre($arrResult[1]);
-			} 
-			else $object = null;	
-			return $object;
+			$arrObjects = array();
+			foreach($arrResult as $key => $val) {
+					$arrObjects[$val[0]] = new $table();
+					//METEMOS ATRIBUTOS DE PRODUCTO (COMUNES)
+					$arrObjects[$val[0]]->setId($val["id"]);
+					$arrObjects[$val[0]]->setTitle($val["title"]);
+					$arrObjects[$val[0]]->setYear($val["year"]);
+					$arrObjects[$val[0]]->setPublisher($val["publisher"]);
+					$arrObjects[$val[0]]->setGenre($val["genre"]);
+
+					if($table == "Movie"){
+						$arrObjects[$val[0]]->setDirector($val["director"]);
+						$arrObjects[$val[0]]->setDuration($val["duration"]);
+						$arrObjects[$val[0]]->setISAN($val["isan"]);
+					}
+					else if($table == "Book"){
+						$arrObjects[$val[0]]->setAuthor($val["author"]);
+						$arrObjects[$val[0]]->setPages($val["pages"]);
+						$arrObjects[$val[0]]->setISBN($val["isbn"]);
+					}
+					else if($table == "Disc"){
+						$arrObjects[$val[0]]->setArtist($val["artist"]);
+						$arrObjects[$val[0]]->setDuration($val["duration"]);
+						$arrObjects[$val[0]]->setISWC($val["iswc"]);
+					}
+			}
+			return $arrObjects;
 		}
+		
     }
 ?>

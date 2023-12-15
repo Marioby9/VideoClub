@@ -5,13 +5,13 @@
     <form id="simpleForm" action="<?php echo $_SERVER["PHP_SELF"]."?ruta=movies"; ?>" method="post">
         <div class="search">
             <p>Flitrar por:</p>
-            <select name="filter" id="">
+            <select name="filter">
                 <option value="title">Título</option>
-                <option value="author">Autor</option>
-                <option value="isbn">ISBN</option>
-                <option value="publisher">Editorial</option>
+                <option value="director">Director</option>
+                <option value="year">Año</option>
+                <option value="publisher">Productora</option>
+                <option value="duration">Duración</option>
                 <option value="genre">Género</option>
-                <option value="language">Idioma</option>
             </select>
             <div class="field">
                 <input type="text" name="keyword" id="password" placeholder="Introduce las palabras clave">
@@ -35,7 +35,7 @@
         <hr>
         <div class="movies">
             <?php foreach ($allMovies as $movie) {?>
-                <a href="?ruta=singleBook&id=<?php echo $book["id"];?>" class="movie">
+                <a href="?ruta=singleBook&id=<?php echo $movie->getId();?>" class="movie">
                         <p><?php echo $movie->getTitle(); ?></p>
                         <p><?php echo $movie->getDirector(); ?></p>
                         <p><?php echo $movie->getYear(); ?></p>
@@ -48,5 +48,5 @@
     </div>
     </div>
     
-    
+    <script src="./public/js/Movies.js"></script>
 </div>
