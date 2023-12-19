@@ -63,7 +63,7 @@
     transform: scale(1.2);
 }
 
-.avanzada{
+.btnAdd{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,16 +73,17 @@
     border-radius: 10px;
     transition: background-color .2s;
     cursor: pointer;
+    color: #fff;
 }
-.avanzada:hover{
+.btnAdd:hover{
     background-color: #12395d;
 
 }
-.avanzada p{
-    font-size: 11px;
+.btnAdd p{
+    font-size: 15px;
     text-align: center;
 }
-.avanzada i{
+.btnAdd i{
     font-size: large;
     color: #ffffff;
 }

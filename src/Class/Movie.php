@@ -1,5 +1,4 @@
 <?php
-    require_once "./src/Class/Product.php";
 
     class Movie extends Product{
 

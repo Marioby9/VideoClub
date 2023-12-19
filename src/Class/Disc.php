@@ -1,5 +1,4 @@
 <?php
-    require_once "./Product.php";
 
     class Disc extends Product{
         

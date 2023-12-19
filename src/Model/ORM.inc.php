@@ -4,11 +4,6 @@
 	 */
 	class ORM
     {
-		//Atributos de conexión a base de datos
-		private static $host = "localhost";
-		private static $user = "videoclub";
-		private static $password = "videoclub";
-		private static $database = "videoclub";
 		
 		/**
 		 * Mapeamos el objeto con la base de datos.
@@ -18,7 +13,7 @@
 		public function persist(&$object) {
 			$id = 0; //aux para obtener el siguiente id
 			try{  
-				$dbConn= new PDO("mysql:host=".self::$host.";dbname=".self::$database."",self::$user,self::$password);  
+				$dbConn= new PDO("mysql:host=".HOST.";dbname=".DATABASE."", USER, PASSWORD);  
 			} catch(Exception $e){  
 				echo "Connection failed" . $e->getMessage();  
 			}  
@@ -28,7 +23,7 @@
 
 				$dbConn->beginTransaction();
 				//Obtenemos el siguiente id de la tabla
-				$sentencia = $dbConn->prepare("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '".self::$database."' AND TABLE_NAME = '".get_class($object)."';");
+				$sentencia = $dbConn->prepare("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '".DATABASE."' AND TABLE_NAME = '".get_class($object)."';");
 				if ($sentencia->execute()) {
 					while ($fila = $sentencia->fetch()) {
 						$id = $fila;
@@ -48,12 +43,41 @@
 
 				$dbConn->beginTransaction();
 				//Insertamos el objeto en la base de datos
-				$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (nombre) VALUES (?)");
-				$sentencia->bindParam(1, $nombre);
 				
-				$nombre = $object->getNombre();//Obtenemos el nombre del objeto
-				$sentencia->execute();
+				if(get_class($object) == "Movie" ){
+					$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (title, director, year, publisher, duration, isan, genre) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					$creator = $object->getDirector();
+					$extension = $object->getDuration();
+					$code = $object->getISAN();
+				}
+				else if(get_class($object) == "Book"){
+					$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (title, author, year, publisher, pages, isbn, genre) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					$creator = $object->getAuthor();
+					$extension = $object->getPages();
+					$code = $object->getISBN();
+				}
+				else if(get_class($object) == "Disc"){
+					$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (title, director, year, publisher, duration, iswc, genre) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					$creator = $object->getArtist();
+					$extension = $object->getDuration();
+					$code = $object->getISWC();
+				}
 
+				$title = $object->getTitle();//Obtenemos el nombre del objeto
+				$year = $object->getYear();
+				$publisher = $object->getPublisher();
+				$genre = $object->getGenre();
+
+				$sentencia->bindParam(1, $title);
+				$sentencia->bindParam(2, $creator);
+				$sentencia->bindParam(3, $year);
+				$sentencia->bindParam(4, $publisher);
+				$sentencia->bindParam(5, $extension);
+				$sentencia->bindParam(6, $code);
+				$sentencia->bindParam(7, $genre);
+
+
+				$sentencia->execute();
 				$dbConn->commit();
   
 			} catch (Exception $e) {
@@ -69,7 +93,7 @@
 		 */
 		public function flush(&$object) {
 			try{  
-				$dbConn= new PDO("mysql:host=".self::$host.";dbname=".self::$database."",self::$user,self::$password);  
+				$dbConn= new PDO("mysql:host=".HOST.";dbname=".DATABASE."", USER, PASSWORD);  
 			} catch(Exception $e){  
 				echo "Connection failed" . $e->getMessage();  
 			}  
@@ -104,7 +128,7 @@
 			$arrResult = array();
 			
 			try{  
-				$dbConn= new PDO("mysql:host=".self::$host.";dbname=".self::$database."",self::$user,self::$password);  
+				$dbConn= new PDO("mysql:host=".HOST.";dbname=".DATABASE."", USER, PASSWORD);  
 				//echo "Successfully connected with myDB database";  
 			} catch(Exception $e){  
 				echo "Connection failed" . $e->getMessage();  
@@ -166,7 +190,7 @@
 			$arrResult = array();
 			
 			try{  
-				$dbConn= new PDO("mysql:host=".self::$host.";dbname=".self::$database."",self::$user,self::$password);  
+				$dbConn= new PDO("mysql:host=".HOST.";dbname=".DATABASE."", USER, PASSWORD);  
 				//echo "Successfully connected with myDB database";  
 			} catch(Exception $e){  
 				echo "Connection failed" . $e->getMessage();  
