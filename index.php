@@ -44,9 +44,10 @@
                 else{
 
                 }
+                include_once "./src/Components/Footer.php"; 
             ?>
-
         </main>
+        
     </section>
 </body>
 </html>
