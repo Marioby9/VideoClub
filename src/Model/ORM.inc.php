@@ -11,6 +11,7 @@
 		 * Usamos PDO y sentencias preparadas.
 		 */
 		public function persist(&$object) {
+	
 			$id = 0; //aux para obtener el siguiente id
 			try{  
 				$dbConn= new PDO("mysql:host=".HOST.";dbname=".DATABASE."", USER, PASSWORD);  
@@ -57,7 +58,7 @@
 					$code = $object->getISBN();
 				}
 				else if(get_class($object) == "Disc"){
-					$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (title, director, year, publisher, duration, iswc, genre) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (title, artist, year, publisher, duration, iswc, genre) VALUES (?, ?, ?, ?, ?, ?, ?)");
 					$creator = $object->getArtist();
 					$extension = $object->getDuration();
 					$code = $object->getISWC();

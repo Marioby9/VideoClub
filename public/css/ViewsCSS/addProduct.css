@@ -1,0 +1,67 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.title{
+    font-size: xxx-large;
+    text-align: center;
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: black;
+    border-radius: 20px;
+    width: 70%;
+    gap: 50px;
+}
+.inputCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.field{
+    width: 100% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+.field p{
+    width: 30%;
+}
+
+input[type = "text"], input[type = "number"]{
+    padding: 10px;
+    width: 70%;
+    border-radius: 10px;
+    font-size: medium;
+}
+
+.buttonCont{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+input[type="submit"]{
+    cursor: pointer;
+    font-size: medium;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: solid 2px #12395d;
+    
+}
+input[type="submit"]:hover{
+    background-color: #12395d;
+    color: white;
+    border: solid 2px white;
+}

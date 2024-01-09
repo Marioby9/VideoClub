@@ -5,6 +5,7 @@
     include_once "./src/Class/Disc.php";
     include_once "./config/configDB.php";
     include_once "./src/Model/ORM.inc.php";
+    include_once "./src/Components/Cards.php";
 
     if(empty($_GET)){
         header("Location: index.php?ruta=home");
@@ -39,6 +40,15 @@
                     }
                     else if($_GET["ruta"] == "music"){
                         include_once "./src/Controller/MusicController.php";
+                    }
+                    else if($_GET["ruta"] == "addMovie"){
+                        include_once "./src/Controller/AddProduct/AddMovieController.php";
+                    }
+                    else if($_GET["ruta"] == "addBook"){
+                        include_once "./src/Controller/AddProduct/AddBookController.php";
+                    }
+                    else if($_GET["ruta"] == "addDisc"){
+                        include_once "./src/Controller/AddProduct/AddDiscController.php";
                     }
                 }
                 else{
