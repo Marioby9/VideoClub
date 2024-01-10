@@ -6,5 +6,5 @@
         $allBooks = $ORM->findAll("Book");
     }
 
-    include_once "./src/View/BooksView.php";
+    include_once "./src/View/AllProducts/BooksView.php";
 ?>

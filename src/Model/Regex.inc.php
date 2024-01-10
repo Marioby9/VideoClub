@@ -1,5 +1,7 @@
 <?php 
-//AQUI HAREMOS LAS COMPROBACIONES CON PREGMATCH O CON VALIDACIONES DE DATOS/SANEAMIENTO
+/**
+ * Expresiones regulares para las comprobaciones del identificador de cada tipo de producto
+ */
 
     class Regex{
 

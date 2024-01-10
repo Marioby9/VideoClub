@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 .title{
     font-size: xxx-large;
@@ -58,7 +57,7 @@ input[type="submit"]{
     padding: 10px 30px;
     border-radius: 10px;
     border: solid 2px #12395d;
-    
+    transition: all 0.3s;
 }
 input[type="submit"]:hover{
     background-color: #12395d;

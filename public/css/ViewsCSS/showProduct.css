@@ -1,0 +1,57 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    font-size: xxx-large;
+    text-align: center;
+}
+.infoCont{
+    background-color: black;
+    display: flex;
+    padding: 40px;
+    font-size: larger;
+    width: 80%;
+    border-radius: 20px;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 70%;
+}
+span{
+    font-weight:  bolder;
+}
+.btns{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 30%;
+}
+.btns a{
+    color: black;
+    font-size: medium;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: solid 2px #12395d;
+    background-color: white;
+    transition: all 0.3s;
+}
+.btns a:hover{
+    transform: scale(1.02);
+}
+#deleteBtn{
+    background-color: rgb(225, 21, 21);
+    border: solid 2px #ffffff;
+    color: white;
+}
+
+#deleteBtn:hover{
+    background-color: rgb(169, 46, 46);
+    
+}
+

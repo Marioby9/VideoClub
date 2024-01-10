@@ -6,5 +6,5 @@
         $allMovies = $ORM->findAll("Movie");
     }
 
-    include_once "./src/View/MoviesView.php";
+    include_once "./src/View/AllProducts/MoviesView.php";
 ?>

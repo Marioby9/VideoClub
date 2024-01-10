@@ -6,5 +6,5 @@
         $allDiscs = $ORM->findAll("Disc");
     }
 
-    include_once "./src/View/MusicView.php";
+    include_once "./src/View/AllProducts/MusicView.php";
 ?>

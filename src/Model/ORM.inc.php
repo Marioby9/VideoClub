@@ -104,14 +104,44 @@
 
 				$dbConn->beginTransaction();
 				//Actualizaremos todos los atributos del objeto
-				$sentencia = $dbConn->prepare("UPDATE ".get_class($object)." SET nombre = ? WHERE id = ?");
-				$sentencia->bindParam(1, $nombre);
-				$sentencia->bindParam(2, $id);
-				
-				$nombre = $object->getNombre();
-				$id = $object->getId();
-				$sentencia->execute();
 
+
+
+				if(get_class($object) == "Movie" ){
+					$sentencia = $dbConn->prepare("UPDATE ".get_class($object)." SET title = ?, director = ?, year = ?, publisher = ?, duration = ?, isan = ?, genre = ? WHERE id = ?");
+					$creator = $object->getDirector();
+					$extension = $object->getDuration();
+					$code = $object->getISAN();
+				}
+				else if(get_class($object) == "Book"){
+					$sentencia = $dbConn->prepare("UPDATE ".get_class($object)." SET title = ?, author = ?, year = ?, publisher = ?, pages = ?, isbn = ?, genre = ? WHERE id = ?");
+					$creator = $object->getAuthor();
+					$extension = $object->getPages();
+					$code = $object->getISBN();
+				}
+				else if(get_class($object) == "Disc"){
+					$sentencia = $dbConn->prepare("UPDATE ".get_class($object)." SET title = ?, artist = ?, year = ?, publisher = ?, duration = ?, iswc = ?, genre = ? WHERE id = ?");
+					$creator = $object->getArtist();
+					$extension = $object->getDuration();
+					$code = $object->getISWC();
+				}
+
+				$id = $object->getId();
+				$title = $object->getTitle();//Obtenemos el nombre del objeto
+				$year = $object->getYear();
+				$publisher = $object->getPublisher();
+				$genre = $object->getGenre();
+
+				$sentencia->bindParam(1, $title);
+				$sentencia->bindParam(2, $creator);
+				$sentencia->bindParam(3, $year);
+				$sentencia->bindParam(4, $publisher);
+				$sentencia->bindParam(5, $extension);
+				$sentencia->bindParam(6, $code);
+				$sentencia->bindParam(7, $genre);
+				$sentencia->bindParam(8, $id);
+
+				$sentencia->execute();
 				$dbConn->commit();
   
 			} catch (Exception $e) {
@@ -184,7 +214,7 @@
 		
 		/**
 		 * Obtenemos un objeto de la tupla seleccionada en 
-		 * base de datos a partir del id
+		 * base de datos a partir del campo y valor especificados
 		 * Usamos PDO y sentencias preparadas
 		 */
 		public function find($table, $column, $value) {
@@ -244,5 +274,71 @@
 			return $arrObjects;
 		}
 		
+
+		/**
+		 * Obtenemos un objeto de la tupla seleccionada en 
+		 * base de datos a partir del id
+		 * Usamos PDO y sentencias preparadas
+		 */
+		public function findByID($table, $id) {
+			$arrResult = array();
+			
+			try{  
+				$dbConn= new PDO("mysql:host=".HOST.";dbname=".DATABASE."", USER, PASSWORD);  
+				//echo "Successfully connected with myDB database";  
+			} catch(Exception $e){  
+				echo "Connection failed" . $e->getMessage();  
+			}  
+
+			try {  
+				$dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+				$dbConn->beginTransaction();
+				$sentencia = $dbConn->prepare("SELECT * FROM $table WHERE id = $id");
+				if ($sentencia->execute(array())) {
+					while ($fila = $sentencia->fetch()) {
+						$arrResult[] = $fila;
+					}
+				}
+
+				$dbConn->commit();
+  
+			} catch (Exception $e) {
+				$dbConn->rollBack();
+				echo "Fallo: " . $e->getMessage();
+			}
+			$dbConn = null;
+
+			// Solo devolver el primer objeto si existe
+
+			$firstObject = reset($arrResult);
+			if ($firstObject) {
+				$obj = new $table();
+				$obj->setId($firstObject["id"]);
+				$obj->setTitle($firstObject["title"]);
+				$obj->setYear($firstObject["year"]);
+				$obj->setPublisher($firstObject["publisher"]);
+				$obj->setGenre($firstObject["genre"]);
+		
+				if ($table == "Movie") {
+					$obj->setDirector($firstObject["director"]);
+					$obj->setDuration($firstObject["duration"]);
+					$obj->setISAN($firstObject["isan"]);
+				} else if ($table == "Book") {
+					$obj->setAuthor($firstObject["author"]);
+					$obj->setPages($firstObject["pages"]);
+					$obj->setISBN($firstObject["isbn"]);
+				} else if ($table == "Disc") {
+					$obj->setArtist($firstObject["artist"]);
+					$obj->setDuration($firstObject["duration"]);
+					$obj->setISWC($firstObject["iswc"]);
+				}
+		
+				return $obj;
+			}
+		
+			return null; 
+		}
+
     }
 ?>
