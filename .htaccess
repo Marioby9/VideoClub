@@ -1,0 +1,8 @@
+# Regla que dice si un directorio es un enlace simbólico, que lo siga.
+Options +FollowSymLinks
+# Regla donde le decimos a Apache que queremos sobre escribir las URLs para crear URLs amigables.
+RewriteEngine on
+
+# Regla de reescritura: RewriteRule ^url-amigable-aqui$ url-no-amigable-va-aqui.php
+
+RewriteRule ^Peliculas$ index.php?ruta=movies
