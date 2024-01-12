@@ -1,5 +1,5 @@
 <div class="mainContainer">
-    <link rel="stylesheet" href="./public/css/ViewsCSS/showProduct.css">
+    <link rel="stylesheet" href="<?php echo $ruta . "/public/css/ViewsCSS/showProduct.css"; ?>">
     <h1 class="title">Ficha técnica de película</h1>
     <div class="infoCont">
         <div class="data">
@@ -12,7 +12,7 @@
             <p><span>Género:</span> <?php echo $movie->getGenre();?></p>
         </div>
         <div class="btns">
-            <a href="?ruta=updateMovie&id=<?php echo $_GET["id"]; ?>" id="editBtn" class=""><p>Modificar</p></a>
+            <a href="<?php echo $ruta . "/updateMovie"."/". $_GET["id"];?>" id="editBtn" class=""><p>Modificar</p></a>
         </div>
     </div>
 </div>

@@ -1,8 +1,8 @@
 <div class="mainContainer">
-    <link rel="stylesheet" href="./public/css/ViewsCSS/movies.css">
+    <link rel="stylesheet" href="<?php echo $ruta . "/public/css/ViewsCSS/movies.css"; ?>">
     <h1 class="title">Nuestro catálogo de música</h1>
     <div class="catalogue">
-    <form id="simpleForm" action="<?php echo $_SERVER["PHP_SELF"]."?ruta=music"; ?>" method="post">
+    <form id="simpleForm" action="<?php echo $ruta."/music"; ?>" method="post">
         <div class="search">
             <p>Flitrar por:</p>
             <select name="filter">
@@ -17,7 +17,7 @@
                 <input type="text" name="keyword" id="password" placeholder="Introduce las palabras clave">
                 <i class="fa-solid fa-magnifying-glass searchButton" id="bSimpleSearch""></i>
             </div>
-            <a class="btnAdd" id="bAdvSearch" href="?ruta=addDisc">
+            <a class="btnAdd" id="bAdvSearch" href="<?php echo $ruta."/addDisc"; ?>">
                 <p>Añadir canción</p>
                 <i class="fa-solid fa-music"></i>
             </a>
@@ -35,7 +35,7 @@
         <hr>
         <div class="movies">
             <?php foreach ($allDiscs as $disc) {?>
-                <a href="?ruta=singleDisc&id=<?php echo $disc->getId();?>" class="movie">
+                <a href="<?php echo $ruta . "/singleDisc"."/". $disc->getId();?>" class="movie">
                         <p><?php echo $disc->getTitle(); ?></p>
                         <p><?php echo $disc->getArtist(); ?></p>
                         <p><?php echo $disc->getYear(); ?></p>

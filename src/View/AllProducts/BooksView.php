@@ -1,8 +1,8 @@
 <div class="mainContainer">
-    <link rel="stylesheet" href="./public/css/ViewsCSS/movies.css">
+    <link rel="stylesheet" href="<?php echo $ruta . "/public/css/ViewsCSS/movies.css"; ?>">
     <h1 class="title">Nuestro catálogo de libros</h1>
     <div class="catalogue">
-    <form id="simpleForm" action="<?php echo $_SERVER["PHP_SELF"]."?ruta=books"; ?>" method="post">
+    <form id="simpleForm" action="<?php echo $ruta."/books"; ?>" method="post">
         <div class="search">
             <p>Flitrar por:</p>
             <select name="filter">
@@ -17,7 +17,7 @@
                 <input type="text" name="keyword" id="password" placeholder="Introduce las palabras clave">
                 <i class="fa-solid fa-magnifying-glass searchButton" id="bSimpleSearch""></i>
             </div>
-            <a class="btnAdd" id="bAdvSearch" href="?ruta=addBook">
+            <a class="btnAdd" id="bAdvSearch" href="<?php echo $ruta."/addBook"; ?>">
                 <p>Añadir Libro</p>
                 <i class="fa-solid fa-book"></i>
             </a>
@@ -35,7 +35,7 @@
         <hr>
         <div class="movies">
             <?php foreach ($allBooks as $book) {?>
-                <a href="?ruta=singleBook&id=<?php echo $book->getId();?>" class="movie">
+                <a href="<?php echo $ruta . "/singleBook"."/". $book->getId();?>" class="movie">
                         <p><?php echo $book->getTitle(); ?></p>
                         <p><?php echo $book->getAuthor(); ?></p>
                         <p><?php echo $book->getYear(); ?></p>

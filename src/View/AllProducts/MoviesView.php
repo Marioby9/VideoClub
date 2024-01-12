@@ -1,8 +1,8 @@
 <div class="mainContainer">
-    <link rel="stylesheet" href="./public/css/ViewsCSS/movies.css">
+    <link rel="stylesheet" href="<?php echo $ruta . "/public/css/ViewsCSS/movies.css"; ?>">
     <h1 class="title">Nuestro catálogo de películas</h1>
     <div class="catalogue">
-    <form id="simpleForm" action="<?php echo $_SERVER["PHP_SELF"]."?ruta=movies"; ?>" method="post">
+    <form id="simpleForm" action="<?php echo $ruta."/movies"; ?>" method="post">
         <div class="search">
             <p>Flitrar por:</p>
             <select name="filter">
@@ -17,7 +17,7 @@
                 <input type="text" name="keyword" id="password" placeholder="Introduce las palabras clave">
                 <i class="fa-solid fa-magnifying-glass searchButton" id="bSimpleSearch""></i>
             </div>
-            <a class="btnAdd" id="bAdvSearch" href="?ruta=addMovie">
+            <a class="btnAdd" id="bAdvSearch" href="<?php echo $ruta."/addMovie"; ?>">
                 <p>Añadir Película</p>
                 <i class="fa-solid fa-clapperboard"></i>
             </a>
@@ -35,7 +35,7 @@
         <hr>
         <div class="movies">
             <?php foreach ($allMovies as $movie) {?>
-                <a href="?ruta=singleMovie&id=<?php echo $movie->getId();?>" class="movie">
+                <a href="<?php echo $ruta . "/singleMovie"."/". $movie->getId();?>" class="movie">
                         <p><?php echo $movie->getTitle(); ?></p>
                         <p><?php echo $movie->getDirector(); ?></p>
                         <p><?php echo $movie->getYear(); ?></p>

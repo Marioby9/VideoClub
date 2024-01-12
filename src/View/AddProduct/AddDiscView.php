@@ -1,5 +1,5 @@
 <div class="mainContainer">
-    <link rel="stylesheet" href="./public/css/ViewsCSS/addProduct.css">
+    <link rel="stylesheet" href="<?php echo $ruta . "/public/css/ViewsCSS/addProduct.css"; ?>">
     <h1 class="title">Añade un disco nuevo</h1>
 
     <?php if(isset($anyEmptyField) && $anyEmptyField){echo Cards::errorCard("No pueden existir campos vacíos"); } ?>
@@ -8,7 +8,7 @@
     <?php if(isset($errorISWC) && $errorISWC){echo Cards::errorCard("El formato del ISWC es incorrecto"); } ?>
     <?php if(isset($inserted) && $inserted){echo Cards::correctCard("Disco añadido correctamente"); } ?>
 
-    <form action="<?php echo $_SERVER["PHP_SELF"]."?ruta=addDisc";?>" method="post">
+    <form action="<?php echo $ruta."/addDisc";?>" method="post">
         <div class="inputCont">
             <div class="field">
                 <p>Título: </p>

@@ -1,5 +1,5 @@
 <div class="mainContainer">
-    <link rel="stylesheet" href="./public/css/ViewsCSS/addProduct.css">
+    <link rel="stylesheet" href="<?php echo $ruta . "/public/css/ViewsCSS/addProduct.css"; ?>">
     <h1 class="title">Actualiza el libro con ID: <?php echo $_GET["id"]; ?></h1>
 
     <?php if(isset($anyEmptyField) && $anyEmptyField){echo Cards::errorCard("No pueden existir campos vacíos"); } ?>
@@ -8,7 +8,7 @@
     <?php if(isset($errorISBN) && $errorISBN){echo Cards::errorCard("El formato del ISBN es incorrecto"); } ?>
     <?php if(isset($updated) && $updated){echo Cards::correctCard("Libro actualizado correctamente"); } ?>
 
-    <form action="<?php echo $_SERVER["PHP_SELF"]."?ruta=updateBook&id=".$_GET["id"];?>" method="post">
+    <form action="<?php echo $ruta."/updateBook". "/" .$_GET["id"] ;?>" method="post">
         <div class="inputCont">
             <div class="field">
                 <p>Título: </p>
