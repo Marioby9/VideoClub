@@ -36,8 +36,6 @@
                         $movie->setId($oldMovie->getId());
                         $ORM->flush($movie);
                         $updated = true;
-                        //VACIAMOS EL POST PORQUE AL INSERTAR CORRECTAMENTE, QUEREMOS VACIAR LOS INPUTS
-                        $_POST = array(); 
                     }
                     else{
                         $errorISAN = true;

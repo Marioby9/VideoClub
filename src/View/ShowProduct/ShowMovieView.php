@@ -13,7 +13,6 @@
         </div>
         <div class="btns">
             <a href="?ruta=updateMovie&id=<?php echo $_GET["id"]; ?>" id="editBtn" class=""><p>Modificar</p></a>
-            <a href="" id="deleteBtn" class=""><p>Eliminar</p></a>
         </div>
     </div>
 </div>

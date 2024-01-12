@@ -36,8 +36,6 @@
                         $disc->setId($oldDisc->getId());
                         $ORM->flush($disc);
                         $updated = true;
-                        //VACIAMOS EL POST PORQUE AL INSERTAR CORRECTAMENTE, QUEREMOS VACIAR LOS INPUTS
-                        $_POST = array(); 
                     }
                     else{
                         $errorISWC = true;

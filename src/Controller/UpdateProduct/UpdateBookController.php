@@ -36,8 +36,6 @@
                         $book->setId($oldBook->getId());
                         $ORM->flush($book);
                         $updated = true;
-                        //VACIAMOS EL POST PORQUE AL INSERTAR CORRECTAMENTE, QUEREMOS VACIAR LOS INPUTS
-                        $_POST = array(); 
                     }
                     else{
                         $errorISBN = true;

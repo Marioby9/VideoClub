@@ -6,7 +6,7 @@
                     <i class="fa-brands fa-github"></i>
                     <p>Ver Proyecto</p>
                 </a>
-                <a class="btnRed center" href="https://github.com/Marioby9/BookSphere" target="_blank">
+                <a class="btnRed center" href="https://github.com/Marioby9" target="_blank">
                     <i class="fa-brands fa-github"></i>
                     <p>Marioby9</p>
                 </a>
