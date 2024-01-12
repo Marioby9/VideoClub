@@ -5,4 +5,10 @@ RewriteEngine on
 
 # Regla de reescritura: RewriteRule ^url-amigable-aqui$ url-no-amigable-va-aqui.php
 
-RewriteRule ^Peliculas$ index.php?ruta=movies
+
+
+# MEJORAR EXPRESIONES REGULARES
+RewriteRule ^(home|movies|books|music)$ index.php?ruta=$1
+RewriteRule ^(singleBook|singleMovie|singleDisc)/([0-9]+)$ index.php?ruta=$1&id=$2
+RewriteRule ^(addMovie|addBook|addDisc)$ index.php?ruta=$1
+RewriteRule ^(updateBook|updateMovie|updateDisc)/([0-9]+)$ index.php?ruta=$1&id=$2
