@@ -41,17 +41,11 @@ span{
     background-color: white;
     transition: all 0.3s;
 }
-.btns a:hover{
-    transform: scale(1.02);
-}
-#deleteBtn{
-    background-color: rgb(225, 21, 21);
-    border: solid 2px #ffffff;
-    color: white;
-}
 
-#deleteBtn:hover{
-    background-color: rgb(169, 46, 46);
-    
+
+.btns a:hover{
+    background-color: #12395d;
+    color: white;
+    border: solid 2px white;
 }
 
