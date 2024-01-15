@@ -10,6 +10,7 @@
             <p><span>Duración:</span> <?php echo $movie->getDuration();?> minutos</p>
             <p><span>ISAN:</span> <?php echo $movie->getISAN();?></p>
             <p><span>Género:</span> <?php echo $movie->getGenre();?></p>
+            <p><span>Reparto:</span> <?php echo $movie->getCast() ? $movie->getCast() : 'No hay reparto';?> </p>
         </div>
         <div class="btns">
             <a href="<?php echo $ruta . "/updateMovie"."/". $_GET["id"];?>" id="editBtn" class=""><p>Modificar</p></a>

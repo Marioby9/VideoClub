@@ -12,3 +12,9 @@
                 </a>
             </div>
 </footer>
+
+</main>
+        
+    </section>
+</body>
+</html>

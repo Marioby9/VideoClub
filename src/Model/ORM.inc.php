@@ -46,10 +46,12 @@
 				//Insertamos el objeto en la base de datos
 				
 				if(get_class($object) == "Movie" ){
-					$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (title, director, year, publisher, duration, isan, genre) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (title, director, year, publisher, duration, isan, genre, cast) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 					$creator = $object->getDirector();
 					$extension = $object->getDuration();
 					$code = $object->getISAN();
+					$cast = $object->getCast();
+					$sentencia->bindParam(8, $cast);
 				}
 				else if(get_class($object) == "Book"){
 					$sentencia = $dbConn->prepare("INSERT INTO ".get_class($object)." (title, author, year, publisher, pages, isbn, genre) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -108,22 +110,30 @@
 
 
 				if(get_class($object) == "Movie" ){
-					$sentencia = $dbConn->prepare("UPDATE ".get_class($object)." SET title = ?, director = ?, year = ?, publisher = ?, duration = ?, isan = ?, genre = ? WHERE id = ?");
+					$sentencia = $dbConn->prepare("UPDATE ".get_class($object)." SET title = ?, director = ?, year = ?, publisher = ?, duration = ?, isan = ?, genre = ?, cast = ? WHERE id = ?");
 					$creator = $object->getDirector();
 					$extension = $object->getDuration();
 					$code = $object->getISAN();
+					$cast = $object->getCast();
+
+					$sentencia->bindParam(8, $cast);
+					$sentencia->bindParam(9, $id);
 				}
 				else if(get_class($object) == "Book"){
 					$sentencia = $dbConn->prepare("UPDATE ".get_class($object)." SET title = ?, author = ?, year = ?, publisher = ?, pages = ?, isbn = ?, genre = ? WHERE id = ?");
 					$creator = $object->getAuthor();
 					$extension = $object->getPages();
 					$code = $object->getISBN();
+
+					$sentencia->bindParam(8, $id);
 				}
 				else if(get_class($object) == "Disc"){
 					$sentencia = $dbConn->prepare("UPDATE ".get_class($object)." SET title = ?, artist = ?, year = ?, publisher = ?, duration = ?, iswc = ?, genre = ? WHERE id = ?");
 					$creator = $object->getArtist();
 					$extension = $object->getDuration();
 					$code = $object->getISWC();
+
+					$sentencia->bindParam(8, $id);
 				}
 
 				$id = $object->getId();
@@ -139,7 +149,7 @@
 				$sentencia->bindParam(5, $extension);
 				$sentencia->bindParam(6, $code);
 				$sentencia->bindParam(7, $genre);
-				$sentencia->bindParam(8, $id);
+				
 
 				$sentencia->execute();
 				$dbConn->commit();
@@ -197,6 +207,7 @@
 						$arrObjects[$val[0]]->setDirector($val["director"]);
 						$arrObjects[$val[0]]->setDuration($val["duration"]);
 						$arrObjects[$val[0]]->setISAN($val["isan"]);
+						$arrObjects[$val[0]]->setCast($val["cast"]);
 					}
 					else if($table == "Book"){
 						$arrObjects[$val[0]]->setAuthor($val["author"]);
@@ -259,6 +270,7 @@
 						$arrObjects[$val[0]]->setDirector($val["director"]);
 						$arrObjects[$val[0]]->setDuration($val["duration"]);
 						$arrObjects[$val[0]]->setISAN($val["isan"]);
+						$arrObjects[$val[0]]->setCast($val["cast"]);
 					}
 					else if($table == "Book"){
 						$arrObjects[$val[0]]->setAuthor($val["author"]);
@@ -324,6 +336,7 @@
 					$obj->setDirector($firstObject["director"]);
 					$obj->setDuration($firstObject["duration"]);
 					$obj->setISAN($firstObject["isan"]);
+					$obj->setCast($firstObject["cast"]);
 				} else if ($table == "Book") {
 					$obj->setAuthor($firstObject["author"]);
 					$obj->setPages($firstObject["pages"]);

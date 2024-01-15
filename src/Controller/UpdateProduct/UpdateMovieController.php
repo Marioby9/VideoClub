@@ -14,6 +14,7 @@
         $duration = intval($_POST["duration"]);
         $ISAN = $_POST["ISAN"];
         $genre = $_POST["genre"];
+        $cast = $_POST["cast"];
 
         //errors
 
@@ -22,7 +23,7 @@
         $errorYear = false;
         $errorDuration = false;
         $errorISAN = false;
-        $anyEmptyField = empty($title) || empty($director) || empty($year) || empty($publisher) || empty($duration) || empty($ISAN) || empty($genre);
+        $anyEmptyField = empty($title) || empty($director) || empty($year) || empty($publisher) || empty($duration) || empty($ISAN) || empty($genre) || empty($cast);
 
 
         //code 
@@ -32,7 +33,7 @@
             if(is_int($year)){
                 if(is_int($duration)){
                     if(Regex::validateISAN($ISAN)){
-                        $movie = new Movie($title, $director, $year, $publisher, $duration, $ISAN, $genre);
+                        $movie = new Movie($title, $director, $year, $publisher, $duration, $ISAN, $genre, $cast);
                         $movie->setId($oldMovie->getId());
                         $ORM->flush($movie);
                         $updated = true;

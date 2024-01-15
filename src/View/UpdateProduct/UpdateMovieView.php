@@ -38,6 +38,10 @@
                 <p>Género: </p>
                 <input type="text" name="genre" placeholder="Introduce el género" value= "<?php echo isset($_POST["genre"]) ? $_POST["genre"] : $oldMovie->getGenre() ; ?>" >
             </div>
+            <div class="field">
+                <p>Reparto: </p>
+                <input type="text" name="cast" placeholder="Introduce los actores" value= "<?php echo isset($_POST["cast"]) ? $_POST["cast"] : $oldMovie->getCast() ; ?>" >
+            </div>
         </div>
         <div class="buttonCont">
             <input type="submit" name="updateMovie" value="Actualizar película">
