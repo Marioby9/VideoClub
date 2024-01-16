@@ -2,3 +2,22 @@
     font-size: xxx-large;
     text-align: center;
 }
+.cont{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+.cont p{
+    font-size: large;
+    width: 85%;
+}
+
+.cont a{
+    color: black;
+    padding: 4px 10px;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 5px;
+}
