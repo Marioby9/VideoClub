@@ -2,7 +2,7 @@
 
 <br />
 <div align="center">
-  <img src="./public/img/logos/blackLogo.png" />
+  <img src="./public/img/logos/whiteLogo.png" />
 
   <p align="center">
     Una página web para la administración de un Videoclub. 
